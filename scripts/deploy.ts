@@ -1,12 +1,12 @@
 import { ethers, run } from 'hardhat'
 import { Cattestation__factory } from '../typechain-types'
 
-const EAS_ARB1 = '0xbD75f629A22Dc1ceD33dDA0b68c546A1c035c458'
-const EAS_MEOW_SCHEMA_ID = '0x8854730a24c711d4c862af13bcdc1a87c742c1d0b8fc39042287d2b844848efb'
+const EAS_SEPO = '0xC2679fBD37d54388Ce493F1DB75320D236e1815e'
+const EAS_MEOW_SCHEMA_ID = '0x03b040aa8df5d4dccdc089d7fbe84da4be2c09df8244cc9da3566ea9f63bfd69'
 
 async function main() {
     const [deployer] = await ethers.getSigners()
-    const cattestationConstArgs = [EAS_ARB1, EAS_MEOW_SCHEMA_ID] as const
+    const cattestationConstArgs = [EAS_SEPO, EAS_MEOW_SCHEMA_ID] as const
     const cattestation = await new Cattestation__factory(deployer)
         .deploy(...cattestationConstArgs)
         .then((contract) => contract.waitForDeployment())
